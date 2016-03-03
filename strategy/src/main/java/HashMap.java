@@ -1,6 +1,7 @@
 /**
  * Created by user on 03-Mar-16.
  */
+// ctrl + shift + t
 
 public class HashMap<KeyType,ValueType>  implements IMap<KeyType,ValueType> {
     IElement first;
@@ -10,7 +11,7 @@ public class HashMap<KeyType,ValueType>  implements IMap<KeyType,ValueType> {
         size = 0;
     }
 
-
+// Na podstawie klucza element hashCode
     @Override
     public void clear() {
         first = null;

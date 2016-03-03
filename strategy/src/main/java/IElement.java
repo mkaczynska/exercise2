@@ -13,5 +13,6 @@ interface IElement<KeyType,ValueType> {
     public abstract void setPrevious(IElement next);
     public abstract IElement getNext();
     public abstract IElement getPrevious();
+    public abstract int hashCode(KeyType key);
 
 }
