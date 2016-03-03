@@ -12,4 +12,13 @@ public class SortedMap<KeyType,ValueType> extends HashMap<KeyType,ValueType> imp
     public ISortedMap sortByValue(Order order) {
         return null;
     }
+
+    private void switchElements(IElement e1, IElement e2, Order order) {
+//        if(order == Order.ASC) {
+//            if (e1.getKey() e2.getKey()) {
+//
+//            }
+//        }
+
+    }
 }
