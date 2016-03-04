@@ -9,81 +9,103 @@ import static org.junit.Assert.*;
  */
 public class HashMapTest {
 
+    private HashMap<String,Integer> multiElementMap;
+    private HashMap<String,Integer> singleElementMap;
+    private HashMap<String,Integer> emptyMap;
+    private String multiKey,singleKey,nonExistingKey,testKey;
+    private Integer multiValue,singleValue,testValue;
+    private IElement multiElement,singleElement;
+    private int multiSize,singleSize;
 
-
+    /**
+     * Test for getting value by key from map with multi elements
+     * @throws Exception
+     */
     @Test
     public void testGetMultiElement() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        hashMap.put("one",1);
-        String key = "five";
-        Integer value = 5;
-        hashMap.put(key,value);
-        hashMap.put("three",3);
-        hashMap.put("seven",7);
-        assertEquals(hashMap.get(key),value);
+        assertEquals(multiElementMap.get(multiKey), multiValue);
     }
 
+    /**
+     * Test for getting value by key from map with single element
+     * @throws Exception
+     */
     @Test
     public void testGetSingleElement() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        String key = "five";
-        Integer value = 5;
-        hashMap.put(key,value);
-        assertEquals(hashMap.get(key),value);
+        assertEquals(singleElementMap.get(singleKey), singleValue);
     }
 
+    /**
+     * Test for getting value by key from empty map
+     * @throws Exception
+     */
     @Test
     public void testGetEmptyMap() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        String key = "five";
-        Integer value = 5;
-        assertEquals(hashMap.get("five"),null);
+        assertEquals(emptyMap.get(singleKey),null);
     }
 
+    /**
+     * Test for getting value by giving non existing key
+     * @throws Exception
+     */
     @Test
     public void testGetNonExisting() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        String key = "five";
-        Integer value = 5;
-        hashMap.put(key,value);
-        assertEquals(hashMap.get("one"),null);
+        assertEquals(multiElementMap.get(nonExistingKey),null);
     }
 
 
+    /**
+     * Test for checking if multi elements map is empty
+     * @throws Exception
+     */
     @Test
     public void testIsEmptyMultiElement() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        hashMap.put("one",1);
-        hashMap.put("five",5);
-        hashMap.put("three",3);
-        hashMap.put("seven",7);
-        assertEquals(hashMap.isEmpty(),false);
+        assertEquals(multiElementMap.isEmpty(),false);
     }
 
+    /**
+     * Test for checking if single element map is empty
+     * @throws Exception
+     */
     @Test
     public void testIsEmptySingleElement() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        hashMap.put("seven",7);
-        assertEquals(hashMap.isEmpty(),false);
+        assertEquals(singleElementMap.isEmpty(),false);
     }
 
+    /**
+     * Test for checking if empty map is empty
+     * @throws Exception
+     */
     @Test
     public void testIsEmptyEmptyMap() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        assertEquals(hashMap.isEmpty(),true);
+        assertEquals(emptyMap.isEmpty(),true);
     }
 
+    /**
+     * Test for adding new element to map with multi elements
+     * @throws Exception
+     */
     @Test
-    public void testPutMultiElement() throws Exception {
-        HashMap<String,Integer> hashMap = new HashMap<String, Integer>();
-        hashMap.put("one",1);
-        String key = "five";
-        Integer value = 5;
-        hashMap.put(key,value);
-        hashMap.put("three",3);
-        hashMap.put("seven",7);
-        assertEquals(hashMap.get(key),value);
+    public void testPutMultiElementMap() throws Exception {
+        assertEquals(multiElementMap.put(testKey,testValue),multiElementMap.findElement(testKey));
+    }
 
+    /**
+     * Test for adding new element to map with single element
+     * @throws Exception
+     */
+    @Test
+    public void testPutSingleElementMap() throws Exception {
+        assertEquals(singleElementMap.put(testKey,testValue),singleElementMap.findElement(testKey));
+    }
+
+    /**
+     * Test for adding new element to an empty map
+     * @throws Exception
+     */
+    @Test
+    public void testPutEmptyMap() throws Exception {
+        assertEquals(emptyMap.put(testKey,testValue),emptyMap.findElement(testKey));
     }
 
     @Test
@@ -96,9 +118,31 @@ public class HashMapTest {
 
     }
 
+    /**
+     * Test for getting size of map with multi elements
+     * @throws Exception
+     */
     @Test
-    public void testSize() throws Exception {
+    public void testSizeMultiElementMap() throws Exception {
+        assertEquals(multiElementMap.size(), multiSize);
+    }
 
+    /**
+     * Test for getting size of map with single element
+     * @throws Exception
+     */
+    @Test
+    public void testSizeSingleElementMap() throws Exception {
+        assertEquals(singleElementMap.size(), singleSize);
+    }
+
+    /**
+     * Test for getting size of empty map
+     * @throws Exception
+     */
+    @Test
+    public void testSizeEmptyMap() throws Exception {
+        assertEquals(emptyMap.size(), 0);
     }
 
     @Test
@@ -106,9 +150,44 @@ public class HashMapTest {
 
     }
 
+    /**
+     * Test for removing an element from map with multi elements
+     * @throws Exception
+     */
     @Test
-    public void testRemove() throws Exception {
+    public void testRemoveMultiElementMap() throws Exception {
+        multiElementMap.remove(multiKey);
+        assertEquals(multiElementMap.findElement(multiKey),null);
+    }
 
+    /**
+     * Test for removing an element from map with single element
+     * @throws Exception
+     */
+    @Test
+    public void testRemoveSingleElementMap() throws Exception {
+        singleElementMap.remove(singleKey);
+        assertEquals(singleElementMap.findElement(singleKey),null);
+    }
+
+    /**
+     * Test for removing an element from an empty map
+     * @throws Exception
+     */
+    @Test
+    public void testRemoveEmptyMap() throws Exception {
+        emptyMap.remove(singleKey);
+        assertEquals(emptyMap.findElement(singleKey),null);
+    }
+
+    /**
+     * Test for removing a non existing element from map
+     * @throws Exception
+     */
+    @Test
+    public void testRemoveNonExisting() throws Exception {
+        multiElementMap.remove(nonExistingKey);
+        assertEquals(multiElementMap.findElement(nonExistingKey),null);
     }
 
     @Test
@@ -117,42 +196,39 @@ public class HashMapTest {
     }
 
     /**
-     * Test searches for an element
+     * Test for finding element by key in map with multi elements
      * @throws Exception
      */
     @Test
     public void testFindElementMultiElement() throws Exception {
-        HashMap<Integer,String> hashMap = new HashMap<Integer, String>();
-        int key = 3;
-        String value = "three";
-        hashMap.put(2, "two");
-        IElement element = hashMap.put(key,value);
-        hashMap.put(4, "four");
-        assertEquals(hashMap.findElement(key),element);
+        assertEquals(multiElementMap.findElement(multiKey),multiElement);
     }
 
+    /**
+     * Test for finding element by key in map with single element
+     * @throws Exception
+     */
     @Test
     public void testFindElementSingleElement() throws Exception {
-        HashMap<Integer,String> hashMap = new HashMap<Integer, String>();
-        int key = 3;
-        String value = "three";
-        IElement element = hashMap.put(key,value);
-        assertEquals(hashMap.findElement(key),element);
+        assertEquals(singleElementMap.findElement(singleKey),singleElement);
     }
 
+    /**
+     * Test for finding a non existing element by key in map
+     * @throws Exception
+     */
     @Test
     public void testFindElementNonExisting() throws Exception {
-        HashMap<Integer,String> hashMap = new HashMap<Integer, String>();
-        hashMap.put(3, "three");
-        assertEquals(hashMap.findElement(4),null);
+        assertEquals(multiElementMap.findElement(nonExistingKey),null);
     }
 
+    /**
+     * Test for finding an element by key in empty map
+     * @throws Exception
+     */
     @Test
     public void testFindElementEmptyMap() throws Exception {
-        HashMap<Integer,String> hashMap = new HashMap<Integer, String>();
-        int key = 3;
-        String value = "three";
-        assertEquals(hashMap.findElement(key),null);
+        assertEquals(emptyMap.findElement(singleKey),null);
     }
 
     @Test
@@ -162,14 +238,26 @@ public class HashMapTest {
 
     @Before
     public void setUp() throws Exception {
-        HashMap<String,Integer> multiElementHashMap = new HashMap<String, Integer>();
-        multiElementHashMap.put("one", 1);
-        multiElementHashMap.put("five", 5);
-        multiElementHashMap.put("three", 3);
-        multiElementHashMap.put("seven", 7);
+        multiElementMap = new HashMap<String, Integer>();
+        multiElementMap.put("one", 1);
+        multiElementMap.put("five", 5);
+        multiKey = "three";
+        multiValue = 3;
+        multiElement = multiElementMap.put(multiKey, multiValue);
+        multiElementMap.put("seven", 7);
+        multiSize = 4;
 
-        HashMap<String,Integer> singleElementHashMap = new HashMap<String, Integer>();
-        multiElementHashMap.put("seven", 7);
+
+        singleElementMap = new HashMap<String, Integer>();
+        singleKey = "seven";
+        singleValue = 7;
+        singleElement = singleElementMap.put(singleKey, singleValue);
+        singleSize = 1;
+
+        emptyMap = new HashMap<String, Integer>();
+        nonExistingKey = "twenty";
+        testKey = "test";
+        testValue = 100;
 
 
     }

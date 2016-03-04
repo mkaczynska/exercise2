@@ -121,10 +121,15 @@ public class HashMap<KeyType,ValueType> implements IMap<KeyType,ValueType> {
     public int size() {
         for(int i=0; i<INITIAL_CAPACITY; i++)
         {
+            if (table[i] == null) {
+                continue;
+            }
             if(table[i]!=null){
                 size++;
             }
-            size += sizeInColumnTable(table[i]);
+            if(table[i].getNext() != null) {
+                size += sizeInColumnTable(table[i]);
+            }
         }
         return size;
     }
