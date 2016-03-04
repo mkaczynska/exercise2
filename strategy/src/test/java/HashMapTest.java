@@ -17,12 +17,40 @@ public class HashMapTest {
     private IElement multiElement,singleElement;
     private int multiSize,singleSize;
 
+
+    @Before
+    public void setUp() throws Exception {
+        multiElementMap = new HashMap<String, Integer>();
+        multiElementMap.put("one", 1);
+        multiElementMap.put("five", 5);
+        multiKey = "three";
+        multiValue = 3;
+        multiElement = multiElementMap.put(multiKey, multiValue);
+        multiElementMap.put("seven", 7);
+        multiSize = 4;
+
+
+        singleElementMap = new HashMap<String, Integer>();
+        singleKey = "seven";
+        singleValue = 7;
+        singleElement = singleElementMap.put(singleKey, singleValue);
+        singleSize = 1;
+
+        emptyMap = new HashMap<String, Integer>();
+        nonExistingKey = "twenty";
+        testKey = "test";
+        testValue = 100;
+    }
+
     /**
      * Test for getting value by key from map with multi elements
      * @throws Exception
      */
     @Test
     public void testGetMultiElement() throws Exception {
+        // given
+        // when
+        // then
         assertEquals(multiElementMap.get(multiKey), multiValue);
     }
 
@@ -108,16 +136,6 @@ public class HashMapTest {
         assertEquals(emptyMap.put(testKey,testValue),emptyMap.findElement(testKey));
     }
 
-    @Test
-    public void testFindPlaceForElementInArrayOfEntry() throws Exception {
-
-    }
-
-    @Test
-    public void testFindPositionForElementInColumn() throws Exception {
-
-    }
-
     /**
      * Test for getting size of map with multi elements
      * @throws Exception
@@ -145,17 +163,13 @@ public class HashMapTest {
         assertEquals(emptyMap.size(), 0);
     }
 
-    @Test
-    public void testSizeInColumnTable() throws Exception {
-
-    }
-
     /**
      * Test for removing an element from map with multi elements
      * @throws Exception
      */
     @Test
     public void testRemoveMultiElementMap() throws Exception {
+
         multiElementMap.remove(multiKey);
         assertEquals(multiElementMap.findElement(multiKey),null);
     }
@@ -190,10 +204,6 @@ public class HashMapTest {
         assertEquals(multiElementMap.findElement(nonExistingKey),null);
     }
 
-    @Test
-    public void testRemoveIfChildrenFind() throws Exception {
-
-    }
 
     /**
      * Test for finding element by key in map with multi elements
@@ -231,36 +241,6 @@ public class HashMapTest {
         assertEquals(emptyMap.findElement(singleKey),null);
     }
 
-    @Test
-    public void testFindElementOfTheHash() throws Exception {
-
-    }
-
-    @Before
-    public void setUp() throws Exception {
-        multiElementMap = new HashMap<String, Integer>();
-        multiElementMap.put("one", 1);
-        multiElementMap.put("five", 5);
-        multiKey = "three";
-        multiValue = 3;
-        multiElement = multiElementMap.put(multiKey, multiValue);
-        multiElementMap.put("seven", 7);
-        multiSize = 4;
-
-
-        singleElementMap = new HashMap<String, Integer>();
-        singleKey = "seven";
-        singleValue = 7;
-        singleElement = singleElementMap.put(singleKey, singleValue);
-        singleSize = 1;
-
-        emptyMap = new HashMap<String, Integer>();
-        nonExistingKey = "twenty";
-        testKey = "test";
-        testValue = 100;
-
-
-    }
 
     @After
     public void tearDown() throws Exception {
