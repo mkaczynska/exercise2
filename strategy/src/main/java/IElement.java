@@ -1,18 +1,37 @@
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-
 /**
- * Created by user on 03-Mar-16.
+ *
+ * Created by user on 03.03.2016.
  */
-interface IElement<KeyType,ValueType> {
-    public abstract void create();
-    public abstract KeyType getKey();
-    public abstract ValueType getValue();
-    public abstract boolean setKey(KeyType key);
-    public abstract boolean setValue(ValueType value);
-    public abstract void setNext(IElement next);
-    public abstract void setPrevious(IElement next);
-    public abstract IElement getNext();
-    public abstract IElement getPrevious();
-    public abstract int hashCode(KeyType key);
+public interface IElement<KeyType,ValueType> {
+
+    /**
+     *  Method return key of element.
+     * @return return key of element.
+     */
+    public KeyType getKey();
+
+    /**
+     * Method return value of element.
+     * @return return value of element.
+     */
+    public ValueType getValue();
+
+//    /**
+//     *
+//     * @param key
+//     * @return
+//     */
+//    boolean setKey(KeyType key);
+
+    /**
+     * Method setValue to element.
+     * @param value value of element;
+     * @return return true if value was set;
+     */
+    public boolean setValue(ValueType value);
+
+    public void setNext(IElement next);
+    public IElement getNext();
+    
 
 }

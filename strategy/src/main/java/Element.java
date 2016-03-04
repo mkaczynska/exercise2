@@ -1,76 +1,70 @@
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-
 /**
- * Created by user on 03-Mar-16.
+ *
+ * Class used to implements Elements of hashMap
  */
-public class Element<KeyType,ValueType> implements IElement<KeyType,ValueType>{
-    KeyType key;
-    ValueType value;
-    IElement next;
-    IElement previous;
+public class Element<KeyType,ValueType> implements IElement<KeyType,ValueType> {
 
-    public Element() {
-        this.key = null;
-        this.value = null;
-        this.previous = null;
-        this.next = null;
-    }
-//    public Element(KeyType key, ValueType value, Element previous) {
-//        this.key = key;
-//        this.value = value;
-//        this.previous = previous;
-//        this.next = null;
-//    }
+    private KeyType key;
+    private ValueType value;
+    private IElement nextElement;
 
-    public Element(KeyType key, ValueType value, IElement previous) {
+    public Element(KeyType key,ValueType value)
+    {
         this.key = key;
         this.value = value;
-        this.previous = previous;
-        this.next = null;
+        this.nextElement = null;
     }
 
-    public IElement getNext() {
-        return next;
-    }
-
-    public void setNext(IElement next) {
-        this.next = next;
-    }
-
-    public IElement getPrevious() {
-        return previous;
-    }
-
-    public void setPrevious(IElement previous) {
-        this.previous = previous;
-    }
-
-
-    @Override
-    public void create() {
-
-    }
-
+    /**
+     * Method returning key of element
+     * @return Returning Key of element.
+     */
     @Override
     public KeyType getKey() {
-        return key;
+        return this.key;
     }
 
+    /**
+     * Method return value of element.
+     * @return return value of element.
+     */
     @Override
     public ValueType getValue() {
-        return value;
+        return this.value;
     }
 
     @Override
-    public boolean setKey(KeyType key) {
-        this.key = key;
-        return true;
-    }
-
-    @Override
+    /**
+     * Method setValue to element.
+     * @param value value of element;
+     * @return return true if value was set;
+     */
     public boolean setValue(ValueType value) {
         this.value = value;
         return true;
     }
+
+    /**
+     * Method set next Element as children to Element.
+     * @param next Reference to next element;
+     */
+    public void setNext(IElement next)
+    {
+        this.nextElement = next;
+    }
+
+    /**
+     *     /**
+     * Method return next Element as children to Element.
+     * @return child of element.
+     */
+    public IElement getNext(){return this.nextElement;}
+
+//    public final Comparator<IElement<KeyType,ValueType>> KEY_COMPARATOR = new Comparator<IElement<KeyType,ValueType>>() {
+//        @Override
+//        public int compare(IElement<KeyType, ValueType> o1, IElement<KeyType, ValueType> o2) {
+//            return o1.getKey().compareTo(o2.getKey());
+//        }
+//    };
 
 }

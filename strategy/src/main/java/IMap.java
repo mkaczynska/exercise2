@@ -1,15 +1,51 @@
-import java.util.Set;
-
 /**
- * Created by user on 03-Mar-16.
+ *
+ * Head interface of HashMap implementation.
  */
-public interface IMap<KeyType,ValueType> {
-    public abstract void clear();
-    public abstract Object get(KeyType key);
-    public abstract boolean isEmpty();
-    public abstract IElement put(KeyType key, ValueType value);
-    public abstract IElement remove(KeyType key);
-    public abstract int size();
-    public abstract void show();
-    public abstract IElement findElement(KeyType key);
+public interface IMap<KeyType,ValueType>{
+
+    /**
+     * Method delete all Elements in Hashmap.
+     */
+    void clear();
+
+    /**
+     * Method returns the value to which the specified key is mapped,
+     * or null if this map contains no mapping for the key.
+     * @param key the key whose associated value is to be returned
+     * @return the value to which the specified key is mapped,
+     * or null if this map contains no mapping for the key
+     */
+    ValueType get(KeyType key);
+
+    /**
+     * Returns true if this map contains no key-value mappings.
+     * @return true if this map contains no key-value mappings.
+     */
+    boolean isEmpty();
+
+    /**
+     * Associates the specified value with the specified key in this map.
+     * If the map previously contained a mapping for the key, the old value is replaced.
+     * @param key key with which the specified value is to be associated
+     * @param value value to be associated with the specified key
+     * @return true or false if value with key is added or not.
+     */
+    IElement put(KeyType key, ValueType value);
+
+
+    /**
+     * Returns the number of key-value mappings in this map.
+     * @return Returns the number of key-value mappings in this map.
+     */
+    int size();
+
+    /**
+     *  Removes the mapping for the specified key from this map if present.
+     * @param key key whose mapping is to be removed from the map
+     * @return true if there was no mapping for key
+     */
+    boolean remove(KeyType key);
+
+
 }
