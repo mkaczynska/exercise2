@@ -9,13 +9,13 @@ import static org.junit.Assert.*;
  */
 public class HashMapTest {
 
-    private HashMap<String,Integer> multiElementMap;
-    private HashMap<String,Integer> singleElementMap;
-    private HashMap<String,Integer> emptyMap;
-    private String multiKey,singleKey,nonExistingKey,testKey;
-    private Integer multiValue,singleValue,testValue;
-    private IElement multiElement,singleElement;
-    private int multiSize,singleSize;
+    private HashMap<String, Integer> multiElementMap;
+    private HashMap<String, Integer> singleElementMap;
+    private HashMap<String, Integer> emptyMap;
+    private String multiKey, singleKey, nonExistingKey, testKey;
+    private Integer multiValue, singleValue, testValue;
+    private IElement multiElement, singleElement;
+    private int multiSize, singleSize;
 
 
     @Before
@@ -44,6 +44,7 @@ public class HashMapTest {
 
     /**
      * Test for getting value by key from map with multi elements
+     *
      * @throws Exception
      */
     @Test
@@ -56,6 +57,7 @@ public class HashMapTest {
 
     /**
      * Test for getting value by key from map with single element
+     *
      * @throws Exception
      */
     @Test
@@ -65,79 +67,88 @@ public class HashMapTest {
 
     /**
      * Test for getting value by key from empty map
+     *
      * @throws Exception
      */
     @Test
     public void testGetEmptyMap() throws Exception {
-        assertEquals(emptyMap.get(singleKey),null);
+        assertEquals(emptyMap.get(singleKey), null);
     }
 
     /**
      * Test for getting value by giving non existing key
+     *
      * @throws Exception
      */
     @Test
     public void testGetNonExisting() throws Exception {
-        assertEquals(multiElementMap.get(nonExistingKey),null);
+        assertEquals(multiElementMap.get(nonExistingKey), null);
     }
 
 
     /**
      * Test for checking if multi elements map is empty
+     *
      * @throws Exception
      */
     @Test
     public void testIsEmptyMultiElement() throws Exception {
-        assertEquals(multiElementMap.isEmpty(),false);
+        assertEquals(multiElementMap.isEmpty(), false);
     }
 
     /**
      * Test for checking if single element map is empty
+     *
      * @throws Exception
      */
     @Test
     public void testIsEmptySingleElement() throws Exception {
-        assertEquals(singleElementMap.isEmpty(),false);
+        assertEquals(singleElementMap.isEmpty(), false);
     }
 
     /**
      * Test for checking if empty map is empty
+     *
      * @throws Exception
      */
     @Test
     public void testIsEmptyEmptyMap() throws Exception {
-        assertEquals(emptyMap.isEmpty(),true);
+        assertEquals(emptyMap.isEmpty(), true);
     }
 
     /**
      * Test for adding new element to map with multi elements
+     *
      * @throws Exception
      */
     @Test
     public void testPutMultiElementMap() throws Exception {
-        assertEquals(multiElementMap.put(testKey,testValue),multiElementMap.findElement(testKey));
+        assertEquals(multiElementMap.put(testKey, testValue), multiElementMap.findElement(testKey));
     }
 
     /**
      * Test for adding new element to map with single element
+     *
      * @throws Exception
      */
     @Test
     public void testPutSingleElementMap() throws Exception {
-        assertEquals(singleElementMap.put(testKey,testValue),singleElementMap.findElement(testKey));
+        assertEquals(singleElementMap.put(testKey, testValue), singleElementMap.findElement(testKey));
     }
 
     /**
      * Test for adding new element to an empty map
+     *
      * @throws Exception
      */
     @Test
     public void testPutEmptyMap() throws Exception {
-        assertEquals(emptyMap.put(testKey,testValue),emptyMap.findElement(testKey));
+        assertEquals(emptyMap.put(testKey, testValue), emptyMap.findElement(testKey));
     }
 
     /**
      * Test for getting size of map with multi elements
+     *
      * @throws Exception
      */
     @Test
@@ -147,6 +158,7 @@ public class HashMapTest {
 
     /**
      * Test for getting size of map with single element
+     *
      * @throws Exception
      */
     @Test
@@ -156,6 +168,7 @@ public class HashMapTest {
 
     /**
      * Test for getting size of empty map
+     *
      * @throws Exception
      */
     @Test
@@ -165,80 +178,88 @@ public class HashMapTest {
 
     /**
      * Test for removing an element from map with multi elements
+     *
      * @throws Exception
      */
     @Test
     public void testRemoveMultiElementMap() throws Exception {
 
         multiElementMap.remove(multiKey);
-        assertEquals(multiElementMap.findElement(multiKey),null);
+        assertEquals(multiElementMap.findElement(multiKey), null);
     }
 
     /**
      * Test for removing an element from map with single element
+     *
      * @throws Exception
      */
     @Test
     public void testRemoveSingleElementMap() throws Exception {
         singleElementMap.remove(singleKey);
-        assertEquals(singleElementMap.findElement(singleKey),null);
+        assertEquals(singleElementMap.findElement(singleKey), null);
     }
 
     /**
      * Test for removing an element from an empty map
+     *
      * @throws Exception
      */
     @Test
     public void testRemoveEmptyMap() throws Exception {
         emptyMap.remove(singleKey);
-        assertEquals(emptyMap.findElement(singleKey),null);
+        assertEquals(emptyMap.findElement(singleKey), null);
     }
 
     /**
      * Test for removing a non existing element from map
+     *
      * @throws Exception
      */
     @Test
     public void testRemoveNonExisting() throws Exception {
         multiElementMap.remove(nonExistingKey);
-        assertEquals(multiElementMap.findElement(nonExistingKey),null);
+        assertEquals(multiElementMap.findElement(nonExistingKey), null);
     }
 
 
     /**
      * Test for finding element by key in map with multi elements
+     *
      * @throws Exception
      */
     @Test
     public void testFindElementMultiElement() throws Exception {
-        assertEquals(multiElementMap.findElement(multiKey),multiElement);
+        assertEquals(multiElementMap.findElement(multiKey), multiElement);
     }
 
     /**
      * Test for finding element by key in map with single element
+     *
      * @throws Exception
      */
     @Test
     public void testFindElementSingleElement() throws Exception {
-        assertEquals(singleElementMap.findElement(singleKey),singleElement);
+        assertEquals(singleElementMap.findElement(singleKey), singleElement);
     }
 
     /**
      * Test for finding a non existing element by key in map
+     *
      * @throws Exception
      */
     @Test
     public void testFindElementNonExisting() throws Exception {
-        assertEquals(multiElementMap.findElement(nonExistingKey),null);
+        assertEquals(multiElementMap.findElement(nonExistingKey), null);
     }
 
     /**
      * Test for finding an element by key in empty map
+     *
      * @throws Exception
      */
     @Test
     public void testFindElementEmptyMap() throws Exception {
-        assertEquals(emptyMap.findElement(singleKey),null);
+        assertEquals(emptyMap.findElement(singleKey), null);
     }
 
 
