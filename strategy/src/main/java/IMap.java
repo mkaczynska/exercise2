@@ -47,5 +47,9 @@ public interface IMap<KeyType,ValueType>{
      */
     boolean remove(KeyType key);
 
+    void show();
+    int getSize();
+    IElement findElement(KeyType key);
+
 
 }

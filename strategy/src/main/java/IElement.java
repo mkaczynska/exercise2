@@ -2,7 +2,7 @@
  *
  * Created by user on 03.03.2016.
  */
-public interface IElement<KeyType,ValueType> {
+public interface IElement<KeyType extends Comparable, ValueType extends Comparable> {
 
     /**
      *  Method return key of element.
@@ -28,10 +28,13 @@ public interface IElement<KeyType,ValueType> {
      * @param value value of element;
      * @return return true if value was set;
      */
-    public boolean setValue(ValueType value);
+    boolean setValue(ValueType value);
 
-    public void setNext(IElement next);
-    public IElement getNext();
+    void setNext(IElement next);
+    IElement getNext();
+
+    void setPrevious(IElement next);
+    IElement getPrevious();
     
 
 }

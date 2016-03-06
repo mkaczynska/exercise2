@@ -2,11 +2,12 @@
  *
  * Class used to implements Elements of hashMap
  */
-public class Element<KeyType,ValueType> implements IElement<KeyType,ValueType> {
+public class Element<KeyType extends Comparable,ValueType extends Comparable> implements IElement<KeyType,ValueType> {
 
     private KeyType key;
     private ValueType value;
     private IElement nextElement;
+    private IElement previousElement;
 
     public Element(KeyType key,ValueType value)
     {
@@ -50,7 +51,7 @@ public class Element<KeyType,ValueType> implements IElement<KeyType,ValueType> {
      */
     public void setNext(IElement next)
     {
-        this.nextElement = next;
+        nextElement = next;
     }
 
     /**
@@ -58,7 +59,19 @@ public class Element<KeyType,ValueType> implements IElement<KeyType,ValueType> {
      * Method return next Element as children to Element.
      * @return child of element.
      */
-    public IElement getNext(){return this.nextElement;}
+    public IElement getNext() {
+        return nextElement;
+    }
+
+    @Override
+    public void setPrevious(IElement previous) {
+        previousElement = previous;
+    }
+
+    @Override
+    public IElement getPrevious() {
+        return previousElement;
+    }
 
 //    public final Comparator<IElement<KeyType,ValueType>> KEY_COMPARATOR = new Comparator<IElement<KeyType,ValueType>>() {
 //        @Override

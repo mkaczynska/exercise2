@@ -2,12 +2,13 @@
  * Class used to implement HashMap with o(1) access.
  *
  */
-public class HashMap<KeyType,ValueType> implements IMap<KeyType,ValueType> {
+public class HashMap<KeyType extends Comparable,ValueType extends Comparable> implements IMap<KeyType,ValueType> {
 
-    protected IElement[] table; //array of elements;
+     IElement<KeyType,ValueType>[] table; //array of elements;
+    private int size;
     private static final int INITIAL_CAPACITY = 4;
 
-    private int size;
+
 
     HashMap() {
         this.size = 0;
@@ -55,13 +56,14 @@ public class HashMap<KeyType,ValueType> implements IMap<KeyType,ValueType> {
      */
     @Override
     public IElement put(KeyType key, ValueType value) {
-        int hash = hash(key);
-        IElement<KeyType, ValueType> element = new Element<KeyType, ValueType>(key, value);
         if (key == null) {
             return null;
         }
+        int hash = hash(key);
+        IElement<KeyType, ValueType> element = new Element<KeyType, ValueType>(key, value);
         if (table[hash] == null) {
             table[hash] = element;
+            size++;
         } else {
             findPlaceForElementInArrayOfEntry(element,key,table[hash]);
         }
@@ -243,5 +245,21 @@ public class HashMap<KeyType,ValueType> implements IMap<KeyType,ValueType> {
      */
     private int hash(KeyType key) {
         return Math.abs(key.hashCode()) % INITIAL_CAPACITY;
+    }
+
+    @Override
+    public void show() {
+        for(int i=0; i<getSize(); i++) {
+            IElement<KeyType,ValueType> element = table[i];
+            do {
+                System.out.println(element.getKey() + ": " + element.getValue());
+            } while ((element = element.getNext()) != null);
+        }
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+    }
+
+    @Override
+    public int getSize() {
+        return size;
     }
 }
